@@ -5,7 +5,7 @@ import { posts } from "./posts";
 import { regions } from "./regions";
 import { site } from "@/config/site";
 
-export type ChatCard = { kind: "service" | "project" | "post"; title: string; text: string; to: string; hash?: string };
+export type ChatCard = { kind: "service" | "project" | "post"; title: string; text: string; to: string; hash?: string | undefined };
 
 export type Intent = {
   id: string;
@@ -86,7 +86,7 @@ export const intents: Intent[] = [
     id: "instrumentation",
     keywords: ["inclinometre", "instrumentation", "auscultation", "talus", "glissement", "surveillance", "fouille"],
     answer: "Nous forons, équipons et relevons des inclinomètres pour suivre les talus, les fouilles et les ouvrages pendant les travaux.",
-    cards: [serviceCard("instrumentation-auscultation"), { kind: "project", title: projects[1].title, text: projects[1].summary, to: `/realisations/${projects[1].slug}` }],
+    cards: [serviceCard("instrumentation-auscultation"), { kind: "project", title: projects[1]!.title, text: projects[1]!.summary, to: `/realisations/${projects[1]!.slug}` }],
   },
   {
     id: "expertise",

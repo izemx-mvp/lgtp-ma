@@ -15,7 +15,7 @@ export function Media({
   src: string;
   alt: string;
   isRealPhoto: boolean;
-  position?: string;
+  position?: string | undefined;
   className?: string;
   imgClassName?: string;
   eager?: boolean;

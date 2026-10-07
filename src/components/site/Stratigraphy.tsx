@@ -16,7 +16,7 @@ function Layer({ i, progress, reduce }: { i: number; progress: MotionValue<numbe
   const end = start + 1 / phases.length;
   const scaleX = useTransform(progress, [start, end], [reduce ? 1 : 0, 1]);
   const opacity = useTransform(progress, [start, start + 0.6 / phases.length], [reduce ? 1 : 0.15, 1]);
-  const p = phases[i];
+  const p = phases[i]!;
   return (
     <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] items-stretch gap-6 md:gap-10">
       <div className="relative overflow-hidden rounded-md">

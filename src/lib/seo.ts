@@ -39,9 +39,9 @@ export function localBusinessJsonLd() {
     },
     areaServed: "Maroc",
   };
-  if (site.phone) data.telephone = site.phone;
-  if (site.email) data.email = site.email;
-  if (site.foundingYear) data.foundingDate = site.foundingYear;
-  if (site.social.length) data.sameAs = site.social.map((s) => s.href);
+  if (site.phone) data["telephone"] = site.phone;
+  if (site.email) data["email"] = site.email;
+  if (site.foundingYear) data["foundingDate"] = site.foundingYear;
+  if (site.social.length) data["sameAs"] = site.social.map((s) => s.href);
   return { type: "application/ld+json", children: JSON.stringify(data) };
 }

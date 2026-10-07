@@ -9,7 +9,7 @@ export function Reveal({
 }: {
   children: ReactNode;
   delay?: number;
-  className?: string;
+  className?: string | undefined;
   as?: "div" | "li" | "section" | "article";
 }) {
   const reduce = useReducedMotion();
