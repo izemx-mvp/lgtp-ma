@@ -10,14 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AProposRouteImport } from './routes/a-propos'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EquipementsRouteImport } from './routes/equipements'
 import { Route as ExpertisesRouteImport } from './routes/expertises'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
+import { Route as PolitiqueDeConfidentialiteRouteImport } from './routes/politique-de-confidentialite'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as RealisationsIndexRouteImport } from './routes/realisations.index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EquipementsRoute = EquipementsRouteImport.update({
@@ -28,6 +44,27 @@ const EquipementsRoute = EquipementsRouteImport.update({
 const ExpertisesRoute = ExpertisesRouteImport.update({
   id: '/expertises',
   path: '/expertises',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PolitiqueDeConfidentialiteRoute =
+  PolitiqueDeConfidentialiteRouteImport.update({
+    id: '/politique-de-confidentialite',
+    path: '/politique-de-confidentialite',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RealisationsIndexRoute = RealisationsIndexRouteImport.update({
@@ -43,55 +80,97 @@ const RealisationsSlugRoute = RealisationsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/contact': typeof ContactRoute
   '/equipements': typeof EquipementsRoute
   '/expertises': typeof ExpertisesRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
+  '/politique-de-confidentialite': typeof PolitiqueDeConfidentialiteRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/contact': typeof ContactRoute
   '/equipements': typeof EquipementsRoute
   '/expertises': typeof ExpertisesRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
+  '/politique-de-confidentialite': typeof PolitiqueDeConfidentialiteRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/realisations': typeof RealisationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/contact': typeof ContactRoute
   '/equipements': typeof EquipementsRoute
   '/expertises': typeof ExpertisesRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
+  '/politique-de-confidentialite': typeof PolitiqueDeConfidentialiteRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/a-propos'
+    | '/contact'
     | '/equipements'
     | '/expertises'
+    | '/mentions-legales'
+    | '/politique-de-confidentialite'
+    | '/blog/$slug'
     | '/realisations/$slug'
+    | '/blog/'
     | '/realisations/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/a-propos'
+    | '/contact'
     | '/equipements'
     | '/expertises'
+    | '/mentions-legales'
+    | '/politique-de-confidentialite'
+    | '/blog/$slug'
     | '/realisations/$slug'
+    | '/blog'
     | '/realisations'
   id:
     | '__root__'
     | '/'
+    | '/a-propos'
+    | '/contact'
     | '/equipements'
     | '/expertises'
+    | '/mentions-legales'
+    | '/politique-de-confidentialite'
+    | '/blog/$slug'
     | '/realisations/$slug'
+    | '/blog/'
     | '/realisations/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
+  ContactRoute: typeof ContactRoute
   EquipementsRoute: typeof EquipementsRoute
   ExpertisesRoute: typeof ExpertisesRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
+  PolitiqueDeConfidentialiteRoute: typeof PolitiqueDeConfidentialiteRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   RealisationsSlugRoute: typeof RealisationsSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   RealisationsIndexRoute: typeof RealisationsIndexRoute
 }
 
@@ -102,6 +181,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/equipements': {
@@ -116,6 +209,34 @@ declare module '@tanstack/react-router' {
       path: '/expertises'
       fullPath: '/expertises'
       preLoaderRoute: typeof ExpertisesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politique-de-confidentialite': {
+      id: '/politique-de-confidentialite'
+      path: '/politique-de-confidentialite'
+      fullPath: '/politique-de-confidentialite'
+      preLoaderRoute: typeof PolitiqueDeConfidentialiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/realisations/': {
@@ -137,9 +258,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
+  ContactRoute: ContactRoute,
   EquipementsRoute: EquipementsRoute,
   ExpertisesRoute: ExpertisesRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
+  PolitiqueDeConfidentialiteRoute: PolitiqueDeConfidentialiteRoute,
+  BlogSlugRoute: BlogSlugRoute,
   RealisationsSlugRoute: RealisationsSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   RealisationsIndexRoute: RealisationsIndexRoute,
 }
 export const routeTree = rootRouteImport
